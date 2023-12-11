@@ -11,7 +11,7 @@ My code will connect all of the coordinates for each segment in the order they a
 
 If you have more than one segment or shape just repeat the pattern.
 
-Save the coordinates in a file called drawing.json
+Save the coordinates in a file that ends with .json
 
 ## Running the Code
 I'm running this on a macbook.
