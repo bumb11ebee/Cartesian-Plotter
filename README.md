@@ -38,7 +38,8 @@ pip install -r requirements.txt
 ```
 python app.py
 ```
-* To see your drawing open up a browser and go to http://localhost:8080 which will show you each segment in its own color OR got to http://localhost:8080/black to see your drawing in black and white
+* To see your drawing open up a browser and go to http://localhost:8080 
+* Select the coordinates file you want to draw and check the box if you want the segments coloured.
 
 ## Examples
 <img src="Coloured.png">

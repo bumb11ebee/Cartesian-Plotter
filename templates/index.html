@@ -1,13 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coordinate Plotter</title>
+    <title>Cartesian Coordinates Drawing</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+        .visible {
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <h1>Coordinate Plotter</h1>
-    <img src="data:image/png;base64,{{ img_base64 }}" alt="Coordinate Plot">
+    <h1>Cartesian Coordinates Drawing</h1>
+    <form action="/" method="post">
+        <select name="file">
+            {% for file in json_files %}
+                <option value="{{ file }}">{{ file }}</option>
+            {% endfor %}
+        </select>
+        <input type="checkbox" name="color" id="color">
+        <label for="color">Colour Segments</label><br>
+        <input type="submit" value="Draw">
+    </form><br>
+    <p>Click on the image to zoom in or out</p>
+    <img id="thumbnail" src="data:image/png;base64,{{ thumbnail_img }}" alt="Thumbnail" class="visible" onclick="toggleImageDisplay('thumbnail', 'fullImage')">
+    <img id="fullImage" src="data:image/png;base64,{{ full_img }}" alt="Full-size Image" class="hidden" onclick="toggleImageDisplay('fullImage', 'thumbnail')">
+    
+    <script>
+        function toggleImageDisplay(toHideId, toShowId) {
+            var toHide = document.getElementById(toHideId);
+            var toShow = document.getElementById(toShowId);
+
+            if (toHide.classList.contains('visible')) {
+                toHide.classList.remove('visible');
+                toHide.classList.add('hidden');
+                toShow.classList.remove('hidden');
+                toShow.classList.add('visible');
+            } else {
+                toHide.classList.remove('hidden');
+                toHide.classList.add('visible');
+                toShow.classList.remove('visible');
+                toShow.classList.add('hidden');
+            }
+        }
+    </script>
 </body>
 </html>
